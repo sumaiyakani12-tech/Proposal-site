@@ -3,155 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <title>Umar ❤️ Sumaiya</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 body{
 font-family:'Poppins',sans-serif;
-min-height:100vh;
-background:linear-gradient(135deg,#000000,#111,#ff003c);
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
+height:100vh;
 overflow:hidden;
-}
-
-/* Background glow animation */
-body::before{
-content:"";
-position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#ff003c,transparent 70%);
-top:-100px;
-left:-100px;
-filter:blur(120px);
-animation:move 8s infinite alternate;
-}
-
-@keyframes move{
-from{transform:translate(0,0);}
-to{transform:translate(200px,200px);}
-}
-
-.card{
-background:rgba(0,0,0,0.85);
-padding:30px;
-border-radius:25px;
-width:95%;
-max-width:420px;
-text-align:center;
-box-shadow:0 0 40px rgba(255,0,60,0.6);
-position:relative;
-z-index:1;
-}
-
-h1{
-font-size:30px;
-margin-bottom:20px;
-color:#ff003c;
-}
-
-.photo-container{
-width:100%;
-height:280px;
-overflow:hidden;
-border-radius:20px;
-margin-bottom:20px;
-box-shadow:0 0 25px rgba(255,0,60,0.8);
-}
-
-.photo-container img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-#message{
-font-size:18px;
-margin-bottom:20px;
-min-height:60px;
-}
-
-button{
-padding:12px 28px;
-border:none;
-border-radius:25px;
-background:#ff003c;
 color:white;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
 }
 
-button:hover{
-background:white;
-color:#ff003c;
-transform:scale(1.08);
-}
-
-.success{
+/* Background Photo */
+.bg{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:black;
+background:url('IMG-20251124-WA0012.jpg') center/cover no-repeat;
+filter:blur(8px) brightness(0.4);
+z-index:-2;
+}
+
+/* Stars */
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* Floating Hearts */
+.heart{
+position:absolute;
+color:#ff4d6d;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* Center Content */
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+}
+
+/* Title */
+h1{
+font-size:34px;
+margin-bottom:25px;
+background:linear-gradient(45deg,#ff4d6d,#ff9e00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* Envelope */
+.envelope{
+width:220px;
+height:140px;
+background:#ff4d6d;
+position:relative;
+margin:auto;
+cursor:pointer;
+transition:1s;
+border-radius:5px;
+}
+.envelope:before{
+content:"";
+position:absolute;
+top:-70px;
+left:0;
+width:0;
+height:0;
+border-left:110px solid transparent;
+border-right:110px solid transparent;
+border-bottom:70px solid #ff4d6d;
+transition:1s;
+}
+.envelope.open{
+transform:translateY(-200px) scale(0.5);
+opacity:0;
+}
+
+/* Letter Page */
+.letter-page{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
 display:none;
 justify-content:center;
 align-items:center;
-flex-direction:column;
-color:#ff003c;
-font-size:28px;
+padding:20px;
+}
+
+.letter{
+background:white;
+color:#333;
+max-width:650px;
+width:100%;
+padding:35px;
+border-radius:15px;
+box-shadow:0 10px 40px rgba(0,0,0,0.6);
+overflow-y:auto;
+max-height:80vh;
+animation:slideUp 1.2s ease forwards;
+}
+
+@keyframes slideUp{
+from{transform:translateY(60px);opacity:0;}
+to{transform:translateY(0);opacity:1;}
+}
+
+.letter h2{
 text-align:center;
-z-index:2;
+margin-bottom:20px;
+color:#ff4d6d;
+}
+
+#typewriter{
+white-space:pre-line;
+line-height:1.7;
+font-size:16px;
+}
+
+/* Final Glow */
+.final{
+text-align:center;
+margin-top:25px;
+font-size:20px;
+color:#ff4d6d;
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{text-shadow:0 0 5px #ff4d6d;}
+to{text-shadow:0 0 20px #ff4d6d;}
 }
 </style>
 </head>
-
 <body>
 
-<div class="card">
+<div class="bg"></div>
 
+<!-- Music -->
+<audio id="bgMusic" loop>
+<source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
+</audio>
+
+<div class="center" id="home">
 <h1>Umar ❤️ Sumaiya</h1>
-
-<div class="photo-container">
-<img src="IMG-20251124-WA0012.jpg" alt="Us">
+<div class="envelope" onclick="openLetter()" id="envelope"></div>
+<p style="margin-top:15px;">Tap the Envelope 💌</p>
 </div>
 
-<div id="message"></div>
-
-<button id="btn">Open Surprise 🔥</button>
-
+<div class="letter-page" id="letterPage">
+<div class="letter">
+<h2>Happy Birthday, My Darling Husband ❤️</h2>
+<div id="typewriter"></div>
+<div class="final">Forever With You 💞✨</div>
 </div>
-
-<div class="success" id="success">
-🔥 Forever Together 🔥
-<p style="margin-top:15px;font-size:20px;">
-Happy Birthday Crime Partner 😎
-</p>
 </div>
 
 <script>
-let text="Partners in crime. Best friends. Soul connection. Umar ❤️ Sumaiya forever 🔥";
+/* Stars */
+for(let i=0;i<80;i++){
+let star=document.createElement("div");
+star.classList.add("star");
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+star.style.animationDuration=(1+Math.random()*2)+"s";
+document.body.appendChild(star);
+}
+
+/* Hearts */
+for(let i=0;i<25;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(heart);
+}
+
+const message = `Happy Birthday, my darling husband. ❤️
+
+In one year, you have become such an important part of my life 💞.
+Your presence brings me peace and happiness in my life. Thank you for being there for me 🫂🫀.
+
+This year wasn’t perfect. We had our ups and downs, moments of laughter and moments of silence.
+But through everything, we stood on the same side. And that means everything to me.
+
+You are more than my husband.
+You are my partner, my best friend, my calm in chaos, my crime partner ❤️✨
+
+InshaAllah, I pray for many more years filled with happiness, love, understanding, and beautiful memories together.
+May Allah bless you with success, peace, and all the joy your heart deserves.
+Barakallah for this bond we share.
+
+I love you more deeply than words can express.
+And I will always make dua for you 🤲.
+
+Once again, happy birthday.
+Thank you for this one year… and for all the years yet to come. ❤️`;
+
 let i=0;
 
-function typeEffect(){
-if(i<text.length){
-document.getElementById("message").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typeEffect,40);
+function openLetter(){
+document.getElementById("envelope").classList.add("open");
+document.getElementById("bgMusic").play();
+setTimeout(()=>{
+document.getElementById("home").style.display="none";
+document.getElementById("letterPage").style.display="flex";
+typeWriter();
+},1000);
 }
-}
-typeEffect();
 
-document.getElementById("btn").addEventListener("click",function(){
-document.querySelector(".card").style.display="none";
-document.getElementById("success").style.display="flex";
-});
+function typeWriter(){
+if(i<message.length){
+document.getElementById("typewriter").innerHTML+=message.charAt(i);
+i++;
+setTimeout(typeWriter,25);
+}
+}
 </script>
 
 </body>
