@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Crime Partner 😎🔥</title>
+<title>Umar ❤️ Sumaiya</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -14,49 +14,54 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(-45deg,#000000,#1f1f1f,#ff004c,#111);
-background-size:400% 400%;
-animation:bg 8s ease infinite;
+background:linear-gradient(135deg,#000000,#1a1a1a,#ff003c);
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
 .card{
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(15px);
-padding:40px;
-border-radius:20px;
+background:rgba(0,0,0,0.75);
+padding:45px;
+border-radius:25px;
 width:90%;
 max-width:420px;
-box-shadow:0 8px 30px rgba(255,0,76,0.6);
+box-shadow:0 0 40px rgba(255,0,60,0.7);
+animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.8);}
+to{opacity:1; transform:scale(1);}
 }
 
 h1{
-font-size:26px;
-margin-bottom:15px;
-color:#ff004c;
+font-size:32px;
+margin-bottom:20px;
+color:#ff003c;
+letter-spacing:1px;
+}
+
+img{
+width:240px;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(255,0,60,0.8);
 }
 
 #typewriter{
 font-size:18px;
-min-height:60px;
-margin-bottom:20px;
+min-height:70px;
+margin-bottom:25px;
 }
 
 button{
-padding:12px 25px;
-font-size:16px;
+padding:14px 30px;
+font-size:17px;
 border:none;
-border-radius:25px;
+border-radius:30px;
 cursor:pointer;
-background:#ff004c;
+background:#ff003c;
 color:white;
 font-weight:bold;
 transition:0.3s;
@@ -65,7 +70,7 @@ transition:0.3s;
 button:hover{
 transform:scale(1.1);
 background:white;
-color:#ff004c;
+color:#ff003c;
 }
 
 .success{
@@ -79,35 +84,21 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-color:#ff004c;
-font-size:28px;
+color:#ff003c;
+font-size:30px;
 display:none;
-animation:fade 1s ease forwards;
 text-align:center;
-padding:20px;
 }
 
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-.heart{
+.fire{
 position:absolute;
-font-size:20px;
-animation:float 5s linear infinite;
+font-size:22px;
+animation:float 4s linear infinite;
 }
 
 @keyframes float{
 0%{transform:translateY(100vh);}
 100%{transform:translateY(-10vh);}
-}
-
-img{
-width:220px;
-border-radius:15px;
-margin-bottom:15px;
-box-shadow:0 0 20px rgba(255,0,76,0.6);
 }
 </style>
 </head>
@@ -116,23 +107,23 @@ box-shadow:0 0 20px rgba(255,0,76,0.6);
 
 <div class="card">
 
-<img src="file_00000000dcf471fab252c028761e1301.png" alt="Memory">
+<h1>Umar ❤️ Sumaiya</h1>
 
-<h1>Happy Birthday Crime Partner 😎🔥</h1>
+<img src="file_00000000dcf471fab252c028761e1301.png" alt="Us">
 
 <div id="typewriter"></div>
 
-<button onclick="showLove()">Open Surprise 💖</button>
+<button onclick="showLove()">Tap for Surprise 🔥</button>
 
 </div>
 
 <div class="success" id="successPage">
-💖 Stay Crazy Forever 😎💖
-<p style="margin-top:15px;font-size:18px;">Ummar ❤️ Sumaiya Always 🔥</p>
+🔥 Forever Together 🔥
+<p style="margin-top:15px;font-size:20px;">Happy Birthday Crime Partner 😎</p>
 </div>
 
 <script>
-let text="You are not just my partner in crime... You are my favorite person forever 😎💖 Stay mad, stay crazy, stay mine always 🔥";
+let text="Partners in crime. Best friends. Soul connection. Umar ❤️ Sumaiya forever 🔥";
 let i=0;
 
 function type(){
@@ -151,9 +142,11 @@ confetti();
 }
 
 function confetti(){
-for(let i=0;i<60;i++){
-let heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="🔥";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(20+Math.random()*25
+for(let i=0;i<70;i++){
+let fire=document.createElement("div");
+fire.classList.add("fire");
+fire.innerHTML="🔥";
+fire.style.left=Math.random()*100+"vw";
+fire.style.fontSize=(20+Math.random()*25)+"px";
+fire.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(fire
