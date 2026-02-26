@@ -10,67 +10,87 @@
 
 body{
 font-family:'Poppins',sans-serif;
-height:100vh;
+min-height:100vh;
+background:linear-gradient(135deg,#000000,#111,#ff003c);
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#000000,#1a1a1a,#ff003c);
-overflow:hidden;
 color:white;
-text-align:center;
+overflow:hidden;
+}
+
+/* Background glow animation */
+body::before{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#ff003c,transparent 70%);
+top:-100px;
+left:-100px;
+filter:blur(120px);
+animation:move 8s infinite alternate;
+}
+
+@keyframes move{
+from{transform:translate(0,0);}
+to{transform:translate(200px,200px);}
 }
 
 .card{
-background:rgba(0,0,0,0.75);
-padding:45px;
+background:rgba(0,0,0,0.85);
+padding:30px;
 border-radius:25px;
-width:90%;
+width:95%;
 max-width:420px;
-box-shadow:0 0 40px rgba(255,0,60,0.7);
-animation:fadeIn 1.2s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.8);}
-to{opacity:1; transform:scale(1);}
+text-align:center;
+box-shadow:0 0 40px rgba(255,0,60,0.6);
+position:relative;
+z-index:1;
 }
 
 h1{
-font-size:32px;
+font-size:30px;
 margin-bottom:20px;
 color:#ff003c;
-letter-spacing:1px;
 }
 
-img{
-width:240px;
+.photo-container{
+width:100%;
+height:280px;
+overflow:hidden;
 border-radius:20px;
 margin-bottom:20px;
 box-shadow:0 0 25px rgba(255,0,60,0.8);
 }
 
-#typewriter{
+.photo-container img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+#message{
 font-size:18px;
-min-height:70px;
-margin-bottom:25px;
+margin-bottom:20px;
+min-height:60px;
 }
 
 button{
-padding:14px 30px;
-font-size:17px;
+padding:12px 28px;
 border:none;
-border-radius:30px;
-cursor:pointer;
+border-radius:25px;
 background:#ff003c;
 color:white;
 font-weight:bold;
+cursor:pointer;
 transition:0.3s;
 }
 
 button:hover{
-transform:scale(1.1);
 background:white;
 color:#ff003c;
+transform:scale(1.08);
 }
 
 .success{
@@ -80,25 +100,14 @@ left:0;
 width:100%;
 height:100%;
 background:black;
-display:flex;
+display:none;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 color:#ff003c;
-font-size:30px;
-display:none;
+font-size:28px;
 text-align:center;
-}
-
-.fire{
-position:absolute;
-font-size:22px;
-animation:float 4s linear infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(100vh);}
-100%{transform:translateY(-10vh);}
+z-index:2;
 }
 </style>
 </head>
@@ -109,44 +118,41 @@ animation:float 4s linear infinite;
 
 <h1>Umar ❤️ Sumaiya</h1>
 
-<img src="file_00000000dcf471fab252c028761e1301.png" alt="Us">
+<div class="photo-container">
+<img src="IMG-20251124-WA0012.jpg" alt="Us">
+</div>
 
-<div id="typewriter"></div>
+<div id="message"></div>
 
-<button onclick="showLove()">Tap for Surprise 🔥</button>
+<button id="btn">Open Surprise 🔥</button>
 
 </div>
 
-<div class="success" id="successPage">
+<div class="success" id="success">
 🔥 Forever Together 🔥
-<p style="margin-top:15px;font-size:20px;">Happy Birthday Crime Partner 😎</p>
+<p style="margin-top:15px;font-size:20px;">
+Happy Birthday Crime Partner 😎
+</p>
 </div>
 
 <script>
 let text="Partners in crime. Best friends. Soul connection. Umar ❤️ Sumaiya forever 🔥";
 let i=0;
 
-function type(){
+function typeEffect(){
 if(i<text.length){
-document.getElementById("typewriter").innerHTML+=text.charAt(i);
+document.getElementById("message").innerHTML+=text.charAt(i);
 i++;
-setTimeout(type,50);
+setTimeout(typeEffect,40);
 }
 }
-type();
+typeEffect();
 
-function showLove(){
+document.getElementById("btn").addEventListener("click",function(){
 document.querySelector(".card").style.display="none";
-document.getElementById("successPage").style.display="flex";
-confetti();
-}
+document.getElementById("success").style.display="flex";
+});
+</script>
 
-function confetti(){
-for(let i=0;i<70;i++){
-let fire=document.createElement("div");
-fire.classList.add("fire");
-fire.innerHTML="🔥";
-fire.style.left=Math.random()*100+"vw";
-fire.style.fontSize=(20+Math.random()*25)+"px";
-fire.style.animationDuration=(3+Math.random()*3)+"s";
-document.body.appendChild(fire
+</body>
+</html>
