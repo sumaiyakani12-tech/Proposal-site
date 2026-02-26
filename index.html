@@ -3,81 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <title>Ummar ❤️ Sumaiya</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
 body{
 margin:0;
 padding:0;
-text-align:center;
-font-family:Arial;
-background:linear-gradient(to bottom,#ff758c,#ff7eb3);
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 overflow:hidden;
 color:white;
+text-align:center;
+}
+
+.container{
+max-width:500px;
 }
 
 h1{
-margin-top:120px;
 font-size:32px;
-animation: glow 1.5s infinite alternate;
+margin-bottom:10px;
 }
 
 p{
-font-size:20px;
-margin:20px;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 10px white;}
-to{text-shadow:0 0 25px red;}
+font-size:18px;
+margin-bottom:30px;
 }
 
 button{
-padding:15px 30px;
-font-size:20px;
-margin:15px;
+padding:14px 28px;
+font-size:18px;
+margin:10px;
 border:none;
 border-radius:30px;
 cursor:pointer;
+transition:0.3s;
 }
 
 #yesBtn{
-background:red;
-color:white;
+background:white;
+color:#ff4d6d;
+font-weight:bold;
+}
+
+#yesBtn:hover{
+transform:scale(1.1);
 }
 
 #noBtn{
-background:white;
-color:black;
+background:transparent;
+border:2px solid white;
+color:white;
 position:relative;
-}
-
-.hearts{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
 }
 
 .heart{
 position:absolute;
-animation: float 5s linear infinite;
+font-size:20px;
+animation:float 5s linear infinite;
 }
 
 @keyframes float{
-from{transform:translateY(100vh);}
-to{transform:translateY(-10vh);}
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+.success{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ff4d6d;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+font-size:30px;
+display:none;
 }
 </style>
 </head>
+
 <body>
 
+<div class="container">
 <h1>Ummar ❤️ Sumaiya</h1>
-
-<p>Sumaiya… Will you stay with Ummar forever? 💍💖</p>
-
+<p>Will you be mine forever? 💍</p>
 <button id="yesBtn">Yes ❤️</button>
 <button id="noBtn">No 😢</button>
+</div>
 
-<div class="hearts"></div>
+<div class="success" id="successPage">
+💖 She Said YES 💖
+<p>Ummar & Sumaiya Forever</p>
+</div>
 
 <script>
 let noBtn=document.getElementById("noBtn");
@@ -89,19 +113,20 @@ noBtn.style.top=Math.random()*100+"px";
 });
 
 yesBtn.addEventListener("click",function(){
-alert("Ummar & Sumaiya Forever 💖🎉");
+document.querySelector(".container").style.display="none";
+document.getElementById("successPage").style.display="flex";
 confetti();
 });
 
 function confetti(){
-for(let i=0;i<40;i++){
+for(let i=0;i<50;i++){
 let heart=document.createElement("div");
 heart.classList.add("heart");
 heart.innerHTML="💖";
 heart.style.left=Math.random()*100+"vw";
 heart.style.fontSize=(20+Math.random()*20)+"px";
 heart.style.animationDuration=(3+Math.random()*3)+"s";
-document.querySelector(".hearts").appendChild(heart);
+document.body.appendChild(heart);
 }
 }
 </script>
