@@ -3,16 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy Birthday Crime Partner ❤️🎊</title>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{height:100vh;overflow:hidden;}
 
-body{
-height:100vh;
-overflow:hidden;
-}
-
-/* Background */
+/* Background Image + Zoom */
 .bg{
 position:fixed;
 width:100%;
@@ -21,11 +16,7 @@ background:url("IMG-20251124-WA0012.jpg") no-repeat center center/cover;
 z-index:-2;
 animation:zoom 20s infinite alternate;
 }
-
-@keyframes zoom{
-from{transform:scale(1);}
-to{transform:scale(1.08);}
-}
+@keyframes zoom{from{transform:scale(1);}to{transform:scale(1.08);}}
 
 .overlay{
 position:fixed;
@@ -35,134 +26,49 @@ background:rgba(0,0,0,0.5);
 z-index:-1;
 }
 
+/* Floating Hearts */
+.heart{position:absolute;color:#ff4d6d;font-size:22px;animation:float 6s linear infinite;}
+@keyframes float{0%{transform:translateY(100vh);opacity:1;}100%{transform:translateY(-10vh);opacity:0;}}
+
 /* Center */
 .center{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
-color:white;
-animation:fadeIn 2s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-h1{
-font-size:40px;
-margin-bottom:25px;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 5px #ff3366;}
-to{text-shadow:0 0 20px #ff3366;}
-}
+position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+text-align:center;color:white;animation:fadeIn 2s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+h1{font-size:40px;margin-bottom:25px;animation:glow 2s infinite alternate;}
+@keyframes glow{from{text-shadow:0 0 5px #ff3366;}to{text-shadow:0 0 20px #ff3366;}}
 
 button{
-padding:18px 40px;
-border:none;
-border-radius:30px;
-background:#ff3366;
-color:white;
-font-size:18px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-transform:scale(1.1);
-background:white;
-color:#ff3366;
-}
+padding:18px 40px;border:none;border-radius:30px;background:#ff3366;
+color:white;font-size:18px;cursor:pointer;transition:0.3s;}
+button:hover{transform:scale(1.1);background:white;color:#ff3366;}
 
 /* Envelope */
 .envelope{
-margin:20px auto;
-width:220px;
-height:130px;
-background:#ff3366;
-position:relative;
-cursor:pointer;
-transition:1s;
-border-radius:6px;
-}
-
+margin:20px auto;width:220px;height:130px;background:#ff3366;
+position:relative;cursor:pointer;transition:1s;border-radius:6px;}
 .envelope:before{
-content:"";
-position:absolute;
-top:-65px;
-left:0;
-border-left:110px solid transparent;
-border-right:110px solid transparent;
-border-bottom:65px solid #ff3366;
-}
-
-.envelope.open{
-transform:translateY(-160px) scale(0.6);
-opacity:0;
-}
+content:"";position:absolute;top:-65px;left:0;
+border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:65px solid #ff3366;}
+.envelope.open{transform:translateY(-160px) scale(0.6);opacity:0;}
 
 /* Letter Page */
 .letter{
-position:fixed;
-width:100%;
-height:100%;
+position:fixed;width:100%;height:100%;
 background:linear-gradient(to bottom,#000,#1a0015);
-display:none;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
+display:none;justify-content:center;align-items:center;padding:20px;}
 .box{
-background:white;
-color:#333;
-max-width:650px;
-padding:30px;
-border-radius:15px;
-max-height:80vh;
-overflow:auto;
-animation:slideUp 1s ease;
-}
-
-@keyframes slideUp{
-from{transform:translateY(40px);opacity:0;}
-to{transform:translateY(0);opacity:1;}
-}
-
-#text{
-white-space:pre-line;
-line-height:1.7;
-font-size:16px;
-}
-
-.final{
-margin-top:20px;
-text-align:center;
-font-size:20px;
-color:#ff3366;
-animation:glow 2s infinite alternate;
-}
+background:white;color:#333;max-width:650px;padding:30px;border-radius:15px;
+max-height:80vh;overflow:auto;animation:slideUp 1s ease;}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+#text{white-space:pre-line;line-height:1.7;font-size:16px;}
+.final{margin-top:20px;text-align:center;font-size:20px;color:#ff3366;animation:glow 2s infinite alternate;}
 
 /* Confetti */
-.confetti{
-position:absolute;
-width:8px;
-height:8px;
-background:red;
-animation:fall 3s linear forwards;
-}
-
-@keyframes fall{
-to{transform:translateY(100vh) rotate(360deg);opacity:0;}
-}
+.confetti{position:absolute;width:8px;height:8px;background:red;animation:fall 3s linear forwards;}
+@keyframes fall{to{transform:translateY(100vh) rotate(360deg);opacity:0;}}
 </style>
 </head>
-
 <body>
 
 <div class="bg"></div>
@@ -187,7 +93,19 @@ to{transform:translateY(100vh) rotate(360deg);opacity:0;}
 </div>
 
 <script>
-const message = `Happy Birthday, my darling husband. ❤️
+/* Floating Hearts */
+for(let i=0;i<20;i++){
+let heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+heart.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(heart);
+}
+
+/* Message */
+const message=`Happy Birthday, my darling husband. ❤️
 
 In one year, you have become such an important part of my life 💞.
 Your presence brings me peace and happiness in my life.
@@ -207,9 +125,7 @@ let i=0;
 function openLetter(){
 document.getElementById("bgMusic").play();
 document.getElementById("envelope").classList.add("open");
-
 confettiEffect();
-
 setTimeout(()=>{
 document.getElementById("home").style.display="none";
 document.getElementById("letter").style.display="flex";
@@ -239,4 +155,4 @@ document.body.appendChild(conf);
 </script>
 
 </body>
-</html>￼Enter
+</html>
