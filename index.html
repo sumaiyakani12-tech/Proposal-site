@@ -2,62 +2,90 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ummar ❤️ Sumaiya</title>
+<title>Happy Birthday Crime Partner 😎</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-margin:0;
-padding:0;
 font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#ff758c,#ff7eb3);
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+background:linear-gradient(-45deg,#000000,#1f1f1f,#ff004c,#111);
+background-size:400% 400%;
+animation:bg 8s ease infinite;
 overflow:hidden;
 color:white;
 text-align:center;
 }
 
-.container{
-max-width:500px;
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+width:90%;
+max-width:420px;
+box-shadow:0 8px 30px rgba(255,0,76,0.6);
 }
 
 h1{
-font-size:32px;
-margin-bottom:10px;
+font-size:26px;
+margin-bottom:15px;
+color:#ff004c;
 }
 
-p{
+#typewriter{
 font-size:18px;
-margin-bottom:30px;
+min-height:60px;
+margin-bottom:20px;
 }
 
 button{
-padding:14px 28px;
-font-size:18px;
-margin:10px;
+padding:12px 25px;
+font-size:16px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 cursor:pointer;
+background:#ff004c;
+color:white;
+font-weight:bold;
 transition:0.3s;
 }
 
-#yesBtn{
-background:white;
-color:#ff4d6d;
-font-weight:bold;
-}
-
-#yesBtn:hover{
+button:hover{
 transform:scale(1.1);
+background:white;
+color:#ff004c;
 }
 
-#noBtn{
-background:transparent;
-border:2px solid white;
-color:white;
-position:relative;
+.success{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:#ff004c;
+font-size:28px;
+display:none;
+animation:fade 1s ease forwards;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 .heart{
@@ -71,60 +99,53 @@ animation:float 5s linear infinite;
 100%{transform:translateY(-10vh);}
 }
 
-.success{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#ff4d6d;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-color:white;
-font-size:30px;
-display:none;
+img{
+width:150px;
+border-radius:15px;
+margin-bottom:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>Ummar ❤️ Sumaiya</h1>
-<p>Will you be mine forever? 💍</p>
-<button id="yesBtn">Yes ❤️</button>
-<button id="noBtn">No 😢</button>
+<div class="card">
+<img src="photo.jpg" alt="Memory">
+<h1>Happy Birthday Crime Partner 😎🔥</h1>
+<div id="typewriter"></div>
+<button onclick="showLove()">Open Surprise 💖</button>
 </div>
 
 <div class="success" id="successPage">
-💖 She Said YES 💖
-<p>Ummar & Sumaiya Forever</p>
+💖 Stay Crazy Forever 😎💖
+<p>Ummar & Sumaiya Always 🔥</p>
 </div>
 
 <script>
-let noBtn=document.getElementById("noBtn");
-let yesBtn=document.getElementById("yesBtn");
+let text="You are not just my partner in crime... You are my favorite person forever 😎💖";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typewriter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,50);
+}
+}
+type();
 
-noBtn.addEventListener("mouseover",function(){
-noBtn.style.left=Math.random()*200+"px";
-noBtn.style.top=Math.random()*100+"px";
-});
-
-yesBtn.addEventListener("click",function(){
-document.querySelector(".container").style.display="none";
+function showLove(){
+document.querySelector(".card").style.display="none";
 document.getElementById("successPage").style.display="flex";
 confetti();
-});
+}
 
 function confetti(){
 for(let i=0;i<50;i++){
 let heart=document.createElement("div");
 heart.classList.add("heart");
-heart.innerHTML="💖";
+heart.innerHTML="🔥";
 heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(20+Math.random()*20)+"px";
+heart.style.fontSize=(20+Math.random()*25)+"px";
 heart.style.animationDuration=(3+Math.random()*3)+"s";
 document.body.appendChild(heart);
 }
