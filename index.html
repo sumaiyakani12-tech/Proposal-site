@@ -2,52 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Umar ❤️ Sumaiya</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Happy Birthday Crime Partner ❤️🎊</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+
 body{
-font-family:'Poppins',sans-serif;
 height:100vh;
 overflow:hidden;
-color:white;
 }
 
-/* Background Photo */
+/* FULL CLEAR BACKGROUND */
 .bg{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:url('IMG-20251124-WA0012.jpg') center/cover no-repeat;
-filter:blur(8px) brightness(0.4);
+background:url("IMG-20251124-WA0012.jpg") no-repeat center center;
+background-size:cover;
 z-index:-2;
 }
 
-/* Stars */
-.star{
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-animation:twinkle 2s infinite alternate;
-}
-@keyframes twinkle{
-from{opacity:0.2;}
-to{opacity:1;}
-}
-
-/* Floating Hearts */
-.heart{
-position:absolute;
-color:#ff4d6d;
-font-size:20px;
-animation:float 6s linear infinite;
-}
-@keyframes float{
-0%{transform:translateY(100vh);opacity:1;}
-100%{transform:translateY(-10vh);opacity:0;}
+/* Dark overlay */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+z-index:-1;
 }
 
 /* Center Content */
@@ -57,184 +41,101 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 text-align:center;
+color:white;
 }
 
-/* Title */
 h1{
 font-size:34px;
-margin-bottom:25px;
-background:linear-gradient(45deg,#ff4d6d,#ff9e00);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+margin-bottom:20px;
 }
 
-/* Envelope */
-.envelope{
-width:220px;
-height:140px;
-background:#ff4d6d;
-position:relative;
-margin:auto;
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ff3366;
+color:white;
+font-size:16px;
 cursor:pointer;
-transition:1s;
-border-radius:5px;
-}
-.envelope:before{
-content:"";
-position:absolute;
-top:-70px;
-left:0;
-width:0;
-height:0;
-border-left:110px solid transparent;
-border-right:110px solid transparent;
-border-bottom:70px solid #ff4d6d;
-transition:1s;
-}
-.envelope.open{
-transform:translateY(-200px) scale(0.5);
-opacity:0;
+cursor:pointer;
 }
 
-/* Letter Page */
-.letter-page{
+/* Letter */
+.letter{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.9);
 display:none;
 justify-content:center;
 align-items:center;
 padding:20px;
 }
 
-.letter{
+.box{
 background:white;
 color:#333;
-max-width:650px;
-width:100%;
-padding:35px;
-border-radius:15px;
-box-shadow:0 10px 40px rgba(0,0,0,0.6);
-overflow-y:auto;
+max-width:600px;
+padding:25px;
+border-radius:10px;
 max-height:80vh;
-animation:slideUp 1.2s ease forwards;
+overflow:auto;
 }
 
-@keyframes slideUp{
-from{transform:translateY(60px);opacity:0;}
-to{transform:translateY(0);opacity:1;}
-}
-
-.letter h2{
-text-align:center;
-margin-bottom:20px;
-color:#ff4d6d;
-}
-
-#typewriter{
+#text{
 white-space:pre-line;
-line-height:1.7;
-font-size:16px;
-}
-
-/* Final Glow */
-.final{
-text-align:center;
-margin-top:25px;
-font-size:20px;
-color:#ff4d6d;
-animation:glow 2s infinite alternate;
-}
-@keyframes glow{
-from{text-shadow:0 0 5px #ff4d6d;}
-to{text-shadow:0 0 20px #ff4d6d;}
+line-height:1.6;
 }
 </style>
 </head>
 <body>
 
 <div class="bg"></div>
-
-<!-- Music -->
-<audio id="bgMusic" loop>
-<source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav" type="audio/wav">
-</audio>
+<div class="overlay"></div>
 
 <div class="center" id="home">
-<h1>Umar ❤️ Sumaiya</h1>
-<div class="envelope" onclick="openLetter()" id="envelope"></div>
-<p style="margin-top:15px;">Tap the Envelope 💌</p>
+<h1>Happy Birthday Crime Partner ❤️🎊</h1>
+<button onclick="openLetter()">Open Letter 💌</button>
 </div>
 
-<div class="letter-page" id="letterPage">
-<div class="letter">
-<h2>Happy Birthday, My Darling Husband ❤️</h2>
-<div id="typewriter"></div>
-<div class="final">Forever With You 💞✨</div>
+<div class="letter" id="letter">
+<div class="box">
+<h2>Happy Birthday My Darling Husband ❤️</h2>
+<p id="text"></p>
 </div>
 </div>
 
 <script>
-/* Stars */
-for(let i=0;i<80;i++){
-let star=document.createElement("div");
-star.classList.add("star");
-star.style.top=Math.random()*100+"vh";
-star.style.left=Math.random()*100+"vw";
-star.style.animationDuration=(1+Math.random()*2)+"s";
-document.body.appendChild(star);
-}
-
-/* Hearts */
-for(let i=0;i<25;i++){
-let heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="❤";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(15+Math.random()*20)+"px";
-heart.style.animationDuration=(4+Math.random()*4)+"s";
-document.body.appendChild(heart);
-}
-
 const message = `Happy Birthday, my darling husband. ❤️
 
 In one year, you have become such an important part of my life 💞.
-Your presence brings me peace and happiness in my life. Thank you for being there for me 🫂🫀.
+Your presence brings me peace and happiness in my life.
 
-This year wasn’t perfect. We had our ups and downs, moments of laughter and moments of silence.
-But through everything, we stood on the same side. And that means everything to me.
+Thank you for being there for me 🫂🫀.
 
-You are more than my husband.
-You are my partner, my best friend, my calm in chaos, my crime partner ❤️✨
+This year wasn’t perfect. We had our ups and downs,
+but we always stood on the same side.
 
-InshaAllah, I pray for many more years filled with happiness, love, understanding, and beautiful memories together.
-May Allah bless you with success, peace, and all the joy your heart deserves.
-Barakallah for this bond we share.
+You are my partner, my best friend,
+my calm in chaos, my crime partner ❤️✨
 
-I love you more deeply than words can express.
-And I will always make dua for you 🤲.
+InshaAllah, many more beautiful years together.
 
-Once again, happy birthday.
-Thank you for this one year… and for all the years yet to come. ❤️`;
+I love you more than words can say 🤲❤️`;
 
 let i=0;
 
 function openLetter(){
-document.getElementById("envelope").classList.add("open");
-document.getElementById("bgMusic").play();
-setTimeout(()=>{
 document.getElementById("home").style.display="none";
-document.getElementById("letterPage").style.display="flex";
+document.getElementById("letter").style.display="flex";
 typeWriter();
-},1000);
 }
 
 function typeWriter(){
 if(i<message.length){
-document.getElementById("typewriter").innerHTML+=message.charAt(i);
+document.getElementById("text").innerHTML+=message.charAt(i);
 i++;
 setTimeout(typeWriter,25);
 }
